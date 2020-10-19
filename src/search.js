@@ -2,8 +2,9 @@ let Fuse = null;
 
 try {
     // eslint-disable-next-line global-require,import/no-extraneous-dependencies
-    Fuse = require('fuse.js');
+    import('fuse.js').then((r) => { Fuse = r.default; });
 } catch (e) {
+    console.error(e);
     /* istanbul ignore next */
     if (process.env.NODE_ENV !== 'production') {
         // eslint-disable-next-line no-console
